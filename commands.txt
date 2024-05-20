@@ -1,0 +1,29 @@
+ffmpeg -f v4l2 -video_size 640x480 -framerate 30 -i /dev/video0 -f mpegts udp://<dirección_ip>:<puerto>
+
+
+ffmpeg -f v4l2 -i /dev/video0 -c:v libx264 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -f mpegts udp://<dirección_ip>:<puerto>
+
+
+ffmpeg -f v4l2 -i /dev/video1 -c:v libx264 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -f mpegts udp://0.0.0.0:8080 -listen 1
+
+ffmpeg -f v4l2 -i /dev/video1 -c:v libx264 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -f mpegts http://0.0.0.0:8080  -listen 1
+
+
+
+ffmpeg -f v4l2 -i /dev/video1 -c:v libx264 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -listen 1 -f mpegts http://0.0.0.0:8080
+
+
+
+ffmpeg -f v4l2 -i /dev/video1 -c:v libx264 -preset ultrafast -tune zerolatency -pix_fmt yuv420p -listen 1 -f mpegts http://0.0.0.0:8080
+
+ffmpeg -f v4l2 -video_size 640x480 -i /dev/video1 -c:v libx264 -preset ultrafast -framerate 30 -tune zerolatency -pix_fmt yuv420p -listen 1 -f mpegts http://0.0.0.0:8080
+
+
+ffmpeg -f v4l2 -video_size 640x480 -pix_fmt yuyv422 -i /dev/video1 -c:v libx264  -preset ultrafast  -tune zerolatency -framerate 100  -listen 1 -f mpegts http://0.0.0.0:8080
+
+
+
+como opnter el video 320x240
+
+
+udp://@ 192.168.137.72:8080
